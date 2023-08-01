@@ -4,7 +4,7 @@ const fs = require('fs');
 
 
 // Import packages; import the module from shape.js
-const { Shape, Triangle, Circle, Square } = require("./lib/shapes.js");
+const { Shape, Triangle, Circle, Square, Heart } = require("./lib/shapes.js");
 
 // Prompt the user for input
 const userInput = async () => {
@@ -23,7 +23,7 @@ const userInput = async () => {
             type: 'list',
             name: 'shape',
             message: 'Choose a shape for the logo:',
-            choices: ['Triangle', 'Circle', 'Square'],
+            choices: ['Triangle', 'Circle', 'Square', 'Heart'],
         },
         {
             type: 'input',
@@ -48,8 +48,11 @@ const createSVG = (shapeType, shapeColor, text, textColor) => {
         case 'Square':
             shape = new Square(shapeColor, textColor, text, shapeType);
             break;
+        case 'Heart':
+            shape = new Heart(shapeColor, textColor, text, shapeType);
+            break;
         default:
-            throw new Error('Error: must select Triangle, Circle, or Square');
+            throw new Error('Error: must select Triangle, Circle, Heart or Square');
     }
 
     return shape.render();
