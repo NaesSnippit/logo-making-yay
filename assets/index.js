@@ -1,3 +1,13 @@
+import { colorsArray } from './colorsArray.js';
+import fs from 'fs';
+import path from 'path';
+const __dirname = path.resolve();
+import inquirer from 'inquirer';
+import { Triangle, Circle, Square } from 'shapes.js';
+
+const canvasWidth = 300;
+const canvasHeight = 200;
+
 //Required
 const inquirer = require('inquirer');
 const fs = require('fs');
