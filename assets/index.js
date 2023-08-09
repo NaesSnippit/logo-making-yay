@@ -54,7 +54,27 @@ const createSVG = (shapeType, shapeColor, text, textColor) => {
 
     return shape.render();
 };
-
+ // adjust shape dimensions here, this is where the 'new' shape is! created dependent on selection
+    let fontSize;
+    switch (answers.shape) {
+      case 'Circle':
+        const circleRadius = Math.min(canvasWidth, canvasHeight) * 0.45;        // increase radius
+        shape = new Circle(canvasWidth / 2, canvasHeight / 2, circleRadius);
+        text._attributes.y = canvasHeight / 1.65;                               // custom text height to suit shape
+        fontSize = 58;                                                          // custom font size to suit shape
+        break;
+        case 'Triangle':                                   
+          const triangleHeight = Math.min(canvasWidth, canvasHeight) * 1.1;     // increase the height lol
+          shape = new Triangle(canvasWidth / 2, canvasHeight / 2, triangleHeight);
+          fontSize = 52;                                                        // custom font size to suit shape
+          break;
+      case 'Square':
+        const squareSize = Math.min(canvasWidth, canvasHeight) * 0.8;           // percentage of area the box takes of canvas
+        shape = new Square(canvasWidth / 2, canvasHeight / 2, squareSize);
+        text._attributes.y = canvasHeight / 1.65;                               // custom text height to suit shape
+        fontSize = 60;                                                          // custom font size to suit shape
+        break;
+    }
 // Write to SVG file
     const saveSVGToFile = (svgContent) => {
         fs.writeFile('logo.svg', svgContent, (err) => {
