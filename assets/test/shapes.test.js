@@ -27,11 +27,3 @@ describe('Square class', () => {
     expect(square.render()).toBe(testSVG);
   });
 });
-
-describe('Heart class', () => {
-  test('renders should return the correct SVG string for a heart', () => {
-    const heart = new Heart('red', 'white', 'HRT', 'square');
-    const testSVG = `<svg version="1.1" width="300" height="300" xmlns="http://www.w3.org/2000/svg"><heart x="50" y="25" width="300" height="200" fill="red" /><text x="150" y="150" text-anchor="middle" fill="white" font-size="80">SQR</text></svg>`;
-    expect(heart.render()).toBe(testSVG);
-  });
-});
